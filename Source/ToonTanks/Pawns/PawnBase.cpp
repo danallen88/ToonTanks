@@ -25,3 +25,29 @@ APawnBase::APawnBase()
 
 }
 
+void APawnBase::RotateTurret(FVector LookAtTarget)
+{
+	// Update TurretMesh rotation to face towards the LookAtTarget passed in from Child Classes
+	// TurretMesh->SetWorldRotation()
+	FVector LookAtTargetCleaned = FVector(LookAtTarget.X, LookAtTarget.Y, TurretMesh->GetComponentLocation().Z);
+	FVector StartLocation = TurretMesh->GetComponentLocation();
+
+	FRotator TurretRotation = FVector(LookAtTargetCleaned - StartLocation).Rotation();
+	TurretMesh->SetWorldRotation(TurretRotation);
+}
+
+void APawnBase::Fire()
+{
+	// Get ProjectileSpawnPoint Location && Rotation -> Spawn Projectile class at Location firing towards Rotation
+	UE_LOG(LogTemp, Warning, TEXT("Fire condition success"));
+}
+
+void APawnBase::HandleDestruction()
+{
+	// Play death effects particle, sound, and camera shake
+
+	// Pawn Turret - Inform GameMode Turret died -> Then Destroy() self
+
+	// Pawn Tank - Inform GameMode Player died -> Then Hide() all components && stop movement input
+}
+
