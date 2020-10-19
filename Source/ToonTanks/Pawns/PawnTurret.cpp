@@ -4,6 +4,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "PawnTank.h"
 #include "GameFramework/Actor.h"
+#include "Engine/World.h"
+#include "TimerManager.h"
 
 // Called when the game starts or when spawned
 void APawnTurret::BeginPlay()
